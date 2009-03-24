@@ -26,4 +26,6 @@ Setup
 Usage
 =====
 
-- Create a template file. Templates are should be named in this form: NAME[.EXTENSION].template
+- Create a recipe file. 
+Recipes should be named in this form: NAME[.EXTENSION].recipe
+A template
