@@ -1,0 +1,7 @@
+Bake
+
+A utility to merge text files into a single output file based on a template and a simple recipe.
+
+Requires: Shell, Python
+
+Written by PhilHawksworth (http://hawksworx.com), based on Cook by UnaMesa.
