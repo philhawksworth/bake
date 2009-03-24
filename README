@@ -1,7 +1,29 @@
 Bake
+====
+ 
+Version: 0.1
+Date: March 24th 2009
+Author: PhilHawksworth http://hawksworx.com http://twitter.com/philhawksworth
 
-A utility to merge text files into a single output file based on a template and a simple recipe.
+Description
+===========
 
-Requires: Shell, Python
+A utility to merge text files into a single output file based on a template and a simple recipe.  Based on Cook by UnaMesa.
 
-Written by PhilHawksworth (http://hawksworx.com), based on Cook by UnaMesa.
+
+Requirements 
+============
+
+- Python
+
+
+Setup
+=====
+
+- Place bake.py on your path.
+
+
+Usage
+=====
+
+- Create a template file. Templates are should be named in this form: NAME[.EXTENSION].template

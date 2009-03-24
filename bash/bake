@@ -1,2 +1,17 @@
 #!/bin/bash
-python /Users/Phil/Projects/bake/bake.py $1
+
+# Modify this to point to the folder containing bake.py
+path_to_bake=/Users/Phil/Projects/bake
+
+# Default options
+default_recipe="index.html.recipe"
+
+# Interpret parameters
+target_recipe=$1
+if [ -z "$target_recipe" ]
+then
+	target_recipe=$default_recipe
+fi 
+
+# Warm up the oven!
+python $path_to_bake/bake.py $target_recipe

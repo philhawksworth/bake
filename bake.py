@@ -10,21 +10,26 @@ template = ''
 def parseRecipe(recipe):
 	global template
 	global filePaths
-	f = open(recipe, 'r')
-	for line in f:
-		line = line.rstrip("\n")
-		if line == "":
-			break
-		args = line.split(": ")	
-		if args[0] == "recipe":
-			# parse and ub recipes found.
-			parseRecipe(args[1])
-		elif args[0] == 'template':
-			# set the template to populate.
-			template = args[1]
-		else:
-			# record the items to include.
-			filePaths.append(args)
+	
+	try:
+		f = open(recipe, 'r')
+	except IOError:
+		print 'Oooops! Couldn\'t open ', recipe
+	else:
+		for line in f:
+			line = line.rstrip("\n")
+			if line == "":
+				break
+			args = line.split(": ")	
+			if args[0] == "recipe":
+				# parse and ub recipes found.
+				parseRecipe(args[1])
+			elif args[0] == 'template':
+				# set the template to populate.
+				template = args[1]
+			else:
+				# record the items to include.
+				filePaths.append(args)
 
 
 def collectIngredients():
