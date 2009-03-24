@@ -1,0 +1,4 @@
+template: test_template.html
+recipe: test_sub_recipe.recipe
+entry: test_entry_foo3.txt
+footer: test_entry_foo4.txt

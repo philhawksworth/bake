@@ -1,0 +1,2 @@
+#!/bin/bash
+python /Users/Phil/Projects/bake/bake.py $1
