@@ -2,13 +2,13 @@ Bake
 ====
  
 Version: 0.1
-Date: March 24th 2009
+Date: March 25th 2009
 Author: PhilHawksworth http://hawksworx.com http://twitter.com/philhawksworth
 
 Description
 ===========
 
-A utility to merge text files into a single output file based on a template and a simple recipe.  Based on Cook by UnaMesa.
+A utility to merge text files into a single output file based on a template and a simple recipe.  Inspired by Cook by UnaMesa.
 
 
 Requirements 
@@ -28,4 +28,44 @@ Usage
 
 - Create a recipe file. 
 Recipes should be named in this form: NAME[.EXTENSION].recipe
-A template
+The name of the output file is based on the name of the recipe file. The Output file will be named thus: NAME[.EXTENSION]
+
+- Define your template.
+The destinations of your ingredients are labeled in a template file as insetion points like this:
+	
+  @@ stuff @@
+  ...
+  @@ other_stuff @@
+
+
+- Populate your recipe.
+Recipe files tell Bake what ingredients to include and where to include them. Templates are included in your recipe like this:
+
+  recipe: path_to_template_file/template_file_name
+
+All other items are included like this:
+
+	stuff: stuff1.txt
+	stuff: stuff2.html
+	other_stuff: other_stuff1:js
+	other_stuff: other_stuff2:any_extension
+	
+You can also include recipes in your recipes like this:
+
+	recipe: a_sub_recipe.recipe
+	
+Note: Only one template is permitted per Bake operation. This should be included in your base recipe. Sub recipes should not contain templates.
+
+
+- run Bake from the directory which contains your base recipe like this:
+
+	bake my_thing.html.recipe
+
+This will create mything.html in the same directory.
+
+
+ 
+
+
+
+

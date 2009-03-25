@@ -24,12 +24,9 @@ def main(argv=None):
 def parseRecipe(recipe):
 	global template
 	global filePaths
-
 	f = open(recipe, 'r')
 	for line in f:
 		line = line.rstrip("\n")
-		if line == "":
-			break
 		args = line.split(": ")
 		if args[0] == "recipe":
 			# parse and ub recipes found.
@@ -37,17 +34,19 @@ def parseRecipe(recipe):
 		elif args[0] == 'template':
 			# set the template to populate.
 			template = args[1]
-		else:
+		elif line != "":
 			# record the items to include.
+			pattern = re.compile('(.+/)(.*)$')
+			path = pattern.match(recipe).group(1)
+			args[1] = path + args[1]
+			print 'Gathering ' + args[0] + ': '+ args[1]
 			filePaths.append(args)
-
 
 
 def collectIngredients():
 	for item in filePaths:
 		ingredients[item[0]] = ""
 	for item in filePaths:
-		print "adding " + item[0] + ": " + item[1]
 		ingredients[item[0]] += open(item[1], 'r').read() + '\n'
 
 
@@ -57,9 +56,10 @@ def populateTemplate():
 	templateFile = open(template, 'r').read()
 
 	# inspect template for sections to populate.
-	pattern = re.compile('(<!-- @@)(.*)(@@ -->)')
+	pattern = re.compile('(.*@@[ ]*)(\w*)([ ]*@@.*)')
 	sections = pattern.finditer(templateFile)
 	for match in sections:
+		print 'Inserting ingredients into ' + match.group(2) + ' section.'
 		templateFile = templateFile.replace(match.group(0), ingredients[match.group(2)])
 
 	# write output
