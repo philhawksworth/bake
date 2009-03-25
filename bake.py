@@ -6,13 +6,13 @@
 
 import sys, os, re
 
+# setup globals and read parameters
+recipe = sys.argv[1]
+filePaths = list()
+ingredients = dict()
+template = ''
 
 def main(argv=None):
-	# setup and read parameters
-	recipe = sys.argv[1]
-	filePaths = list()
-	ingredients = dict()
-	template = ''
 	# get started
 	print "Baking: " + recipe
 	parseRecipe(recipe)
