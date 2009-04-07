@@ -36,9 +36,10 @@ def parseRecipe(recipe):
 			template = args[1]
 		elif line != "":
 			# record the items to include.
-			pattern = re.compile('(.+/)(.*)$')
+			pattern = re.compile('(./)*(.*)$')
 			path = pattern.match(recipe).group(1)
-			args[1] = path + args[1]
+			if not path == None:
+				args[1] = path + args[1]
 			print 'Gathering ' + args[0] + ': '+ args[1]
 			filePaths.append(args)
 
